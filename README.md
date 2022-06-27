@@ -43,9 +43,16 @@ At startup, `postgres-source` gets populated with the `sales` table
 
 | id  | creation_date | sale_value |
 | --- | ------------- | ---------- |
-|  0  |  2022-06-15   |  1234.56   |
-|  1  |  2022-06-16   |  9876.54   |
+|  1  |  2022-06-15   |  1234.56   |
+|  2  |  2022-06-16   |  9876.54   |
 
-You can view this in `pg-admin` by first linking to the Postgres database, then navigating to `Servers/<registered db name>/Databases/postgres/Schemas/public/Tables/sales`.
+You can view this in `pg-admin` by first linking to the Postgres database, then navigating to `Servers/<registered server name>/Databases/postgres/Schemas/public/Tables/sales`. To link the database to `pg-admin`
+1. Give the server a name in the `General` tab (can be any name)
+2. Go to the `Connection` tab and supply the following:
+- Host name/address: `postgres-source` (or `postgres-target`)
+- Post: `5432`
+- Maintenance database: `postgres`
+- Username: `postgres`
+- Password: `postgres`
 
 The `postgres-target` database starts off empty, but after running the DAG, the `sales` table should be copied there.
